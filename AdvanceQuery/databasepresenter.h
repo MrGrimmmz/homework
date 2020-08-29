@@ -12,14 +12,16 @@ public:
     DatabasePresenter( QObject *parent);
     void compposesql();
     void initdatabase();
-
-signals:
-    void signalChange();
-public slots:
-    void slotChange();
+    void sqlwherefirstcconditon(QString data);
+    void sqlwheresecondcconditon(QString data);
+    void sqlwherethirdcconditon(QString data);
 
 private:
     QSqlDatabase *db;
+    QString wherefirstcconditon;
+    QString wheresecondcconditon;
+    QString wherethirdcconditon;
+    QSqlQuery *completequery;
 
 
 };

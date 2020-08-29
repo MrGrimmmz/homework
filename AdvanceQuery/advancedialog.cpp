@@ -80,26 +80,26 @@ void AdvanceDialog::readXml()
     QList.clear();
 
     while (!domNode.isNull())
+    {
+        if (domNode.isElement())
         {
-            if (domNode.isElement())
+            QDomElement domElement = domNode.toElement();
+            QDomNodeList list = domElement.childNodes();
+
+            for (int i = 0; i<list.count(); i++) //遍历子元素，count和size都可以用,可用于标签数计数
             {
-                QDomElement domElement = domNode.toElement();
-                QDomNodeList list = domElement.childNodes();
-
-                for (int i = 0; i<list.count(); i++) //遍历子元素，count和size都可以用,可用于标签数计数
+                QDomNode nodeIndex = list.at(i);
+                if (domNode.isElement())
                 {
-                    QDomNode nodeIndex = list.at(i);
-                    if (domNode.isElement())
-                    {
-                        QDomElement indexElement = nodeIndex.toElement();
-                        QString s1=nodeIndex.toElement().attribute(ui->comboBox->currentText());
-                        QList.append(s1);
-                    }
+                    QDomElement indexElement = nodeIndex.toElement();
+                    QString s1=nodeIndex.toElement().attribute(ui->comboBox->currentText());
+                    QList.append(s1);
                 }
-
             }
-            domNode = domNode.nextSibling();
+
         }
+        domNode = domNode.nextSibling();
+    }
     ui->comboBox_3->clear();
     ui->comboBox_3->addItems(QList);
 }
@@ -117,32 +117,32 @@ void AdvanceDialog::readXml1()
     doc.setContent(&file);
 
     QDomElement root = doc.documentElement();
-   // qDebug() <<root.toElement().tagName();
+    // qDebug() <<root.toElement().tagName();
     QDomNode domNode = root.firstChild();
 
     QStringList QList;
     QList.clear();
 
     while (!domNode.isNull())
+    {
+        if (domNode.isElement())
         {
-            if (domNode.isElement())
-            {
-                QDomElement domElement = domNode.toElement();
-                QDomNodeList list = domElement.childNodes();
+            QDomElement domElement = domNode.toElement();
+            QDomNodeList list = domElement.childNodes();
 
-                for (int i = 0; i<list.count(); i++) //遍历子元素，count和size都可以用,可用于标签数计数
+            for (int i = 0; i<list.count(); i++) //遍历子元素，count和size都可以用,可用于标签数计数
+            {
+                QDomNode nodeIndex = list.at(i);
+                if (domNode.isElement())
                 {
-                    QDomNode nodeIndex = list.at(i);
-                    if (domNode.isElement())
-                    {
-                        QDomElement indexElement = nodeIndex.toElement();
-                        QString s1=nodeIndex.toElement().attribute(ui->comboBox_4->currentText());
-                        QList.append(s1);
-                    }
+                    QDomElement indexElement = nodeIndex.toElement();
+                    QString s1=nodeIndex.toElement().attribute(ui->comboBox_4->currentText());
+                    QList.append(s1);
                 }
             }
-            domNode = domNode.nextSibling();
         }
+        domNode = domNode.nextSibling();
+    }
     ui->comboBox_5->clear();
     ui->comboBox_5->addItems(QList);
 }
@@ -168,26 +168,26 @@ void AdvanceDialog::readXml2()
     QList.clear();
 
     while (!domNode.isNull())
+    {
+        if (domNode.isElement())
         {
-            if (domNode.isElement())
+            QDomElement domElement = domNode.toElement();
+            QDomNodeList list = domElement.childNodes();
+
+            for (int i = 0; i<list.count(); i++) //遍历子元素，count和size都可以用,可用于标签数计数
             {
-                QDomElement domElement = domNode.toElement();
-                QDomNodeList list = domElement.childNodes();
-
-                for (int i = 0; i<list.count(); i++) //遍历子元素，count和size都可以用,可用于标签数计数
+                QDomNode nodeIndex = list.at(i);
+                if (domNode.isElement())
                 {
-                    QDomNode nodeIndex = list.at(i);
-                    if (domNode.isElement())
-                    {
-                        QDomElement indexElement = nodeIndex.toElement();
-                        QString s1=nodeIndex.toElement().attribute(ui->comboBox_6->currentText());
-                        QList.append(s1);
-                    }
+                    QDomElement indexElement = nodeIndex.toElement();
+                    QString s1=nodeIndex.toElement().attribute(ui->comboBox_6->currentText());
+                    QList.append(s1);
                 }
-
             }
-            domNode = domNode.nextSibling();
+
         }
+        domNode = domNode.nextSibling();
+    }
     ui->comboBox_8->clear();
     ui->comboBox_8->addItems(QList);
 }
@@ -195,19 +195,19 @@ void AdvanceDialog::initconnection()
 {
 
     connect(ui->comboBox,SIGNAL(currentIndexChanged(int)),
-                this,SLOT(combox_onChanged()));
+            this,SLOT(combox_onChanged()));
     connect(ui->comboBox_4,SIGNAL(currentIndexChanged(int)),
-                this,SLOT(combox2_onChanged()));
+            this,SLOT(combox2_onChanged()));
     connect(ui->comboBox_6,SIGNAL(currentIndexChanged(int)),
-                this,SLOT(combox3_onChanged()));
+            this,SLOT(combox3_onChanged()));
     connect(ui->pushButton_3,SIGNAL(clicked(bool)),
-                this,SLOT(on_pushButton_clicked()));
+            this,SLOT(on_pushButton_clicked()));
 
 }
 
 void AdvanceDialog::combox_onChanged()
 {
-      readXml();
+    readXml();
 }
 
 void AdvanceDialog::combox2_onChanged()
@@ -257,14 +257,14 @@ void AdvanceDialog::on_pushButton_clicked()
             +" ) or ( "
             +ui->comboBox_6->currentText()+" "+thirdcompare
             +" )";
-     emit sendData(completeSQL);
-     this->close();
+    emit sendData(completeSQL);
+    this->close();
 
 }
 
 void AdvanceDialog::on_pushButton_2_clicked()
 {
     //重载所有选项
-   init();
+    init();
 
 }

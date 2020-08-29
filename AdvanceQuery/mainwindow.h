@@ -18,7 +18,7 @@ public:
     ~MainWindow();
     void initialize();
     void initNodeTable();
-
+    void compposesql(QString data);
 public slots:
 
     void updateData(QString data);
