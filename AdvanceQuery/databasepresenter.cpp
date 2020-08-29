@@ -12,24 +12,23 @@
 DatabasePresenter::DatabasePresenter(QObject *parent):
     QObject(parent)
 {
-
     connect(this, &DatabasePresenter::signalChange, this, &DatabasePresenter::slotChange);
 }
 
 
 void DatabasePresenter::initdatabase()
 {
-        // 传输数据库连接的这些信息在实际开发的时都需要通过读取配置文件得到，
+
         QSettings *configIniRead = new QSettings("database.ini", QSettings::IniFormat);
-        //将读取到的ini文件保存在QString中，先取值，然后通过toString()函数转换成QString类型
+
         QString ipResult = configIniRead->value("/ip/first").toString();
         QString userResult = configIniRead->value("/user/first").toString();
         QString passResult = configIniRead->value("/pass/first").toString();
         QString dataResult = configIniRead->value("/ku/first").toString();
-        //读入完成后删除指针
+
 
         delete configIniRead;
-        /*加载数据库驱动并且进行连接*/
+
         QSqlDatabase db=QSqlDatabase::addDatabase("QMYSQL");//加载驱动
         db.setHostName(""+ipResult+"");//本地连接
         db.setUserName(""+userResult+"");//root用户
@@ -48,7 +47,7 @@ void DatabasePresenter::initdatabase()
 }
 
 
-void DatabasePresenter::compposesql()//查询箱子状态
+void DatabasePresenter::compposesql()
 {
 
 //        QSqlQueryModel *model = new QSqlQueryModel(ui->tableView);

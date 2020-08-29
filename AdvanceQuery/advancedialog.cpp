@@ -63,9 +63,9 @@ void AdvanceDialog::readXml()
 {
     //int currentindex=i;
     QDomDocument doc;
-    QFile file("AdvanceQuery.xml");
-    //QFile file("D:/016903/Documents/AdvanceQuery/AdvanceQuery.xml");
-    //QFile file("./AdvanceQuery.xml");
+
+    QFile file("D:/016903/Documents/AdvanceQuery/AdvanceQuery.xml");
+
     if (!file.open(QIODevice::ReadOnly))
     {
         return;
@@ -106,11 +106,9 @@ void AdvanceDialog::readXml()
 
 void AdvanceDialog::readXml1()
 {
-    //int currentindex=i;
+
     QDomDocument doc;
-   // QFile file("D:/016903/Documents/AdvanceQuery/AdvanceQuery.xml");
-    QFile file("AdvanceQuery.xml");
-    //QFile file("./AdvanceQuery.xml");
+    QFile file("D:/016903/Documents/AdvanceQuery/AdvanceQuery.xml");
     if (!file.open(QIODevice::ReadOnly))
     {
 
@@ -152,11 +150,10 @@ void AdvanceDialog::readXml1()
 
 void AdvanceDialog::readXml2()
 {
-    //int currentindex=i;
     QDomDocument doc;
-   // QFile file("D:/016903/Documents/AdvanceQuery/AdvanceQuery.xml");
-    QFile file("AdvanceQuery.xml");
-    //QFile file("./AdvanceQuery.xml");
+    QFile file("D:/016903/Documents/AdvanceQuery/AdvanceQuery.xml");
+
+
     if (!file.open(QIODevice::ReadOnly))
     {
 
